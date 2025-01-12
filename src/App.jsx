@@ -21,10 +21,13 @@ function App() {
     });
   }
 
+  const validInput = Object.values(userInput).every(value => value > 0);
+
   return <>
     <Header />
     <User onChange={handleChange} userInput={userInput}/>
-    <Results input={userInput}/>
+    {!validInput && alert("Please enter valid input")}
+    {validInput && <Results input={userInput}/>}
   </>
 }
 
