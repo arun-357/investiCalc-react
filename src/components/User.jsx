@@ -1,19 +1,4 @@
-import { use } from "react"
-import { useState } from "react"
-
-export default function User() {
-      const [userInput, setUserInput] = useState({
-            initialInvestment: 10000,
-            annualInvestment: 1000,
-            expectedReturn: 6,
-            duration: 10
-      });
-
-      function handleChange(identifier, value) {
-            setUserInput(prev => {
-                  return { ...prev, [identifier]: value };
-            });
-      }
+export default function User({ onChange, userInput }) {
 
       return <>
             <section id='user-input'>
@@ -24,7 +9,7 @@ export default function User() {
                                     type='number' 
                                     required 
                                     value={userInput.initialInvestment}
-                                    onChange={(data) => handleChange('initialInvestment', 
+                                    onChange={(data) => onChange('initialInvestment', 
                                     data.target.value)}
                               />
                         </p>
@@ -34,7 +19,7 @@ export default function User() {
                                     type='number' 
                                     required 
                                     value={userInput.annualInvestment}
-                                    onChange={(data) => handleChange('annualInvestment', 
+                                    onChange={(data) => onChange('annualInvestment', 
                                     data.target.value)}
                               />
                         </p>
@@ -47,7 +32,7 @@ export default function User() {
                                     type='number' 
                                     required 
                                     value={userInput.expectedReturn}
-                                    onChange={(data) => handleChange('expectedReturn', 
+                                    onChange={(data) => onChange('expectedReturn', 
                                     data.target.value)}
                               />
                         </p>
@@ -57,7 +42,7 @@ export default function User() {
                                     type='number' 
                                     required 
                                     value={userInput.duration}
-                                    onChange={(data) => handleChange('duration', 
+                                    onChange={(data) => onChange('duration', 
                                     data.target.value)}
                               />
                         </p>
